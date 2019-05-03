@@ -47,9 +47,8 @@ import org.apache.http.impl.client.HttpClients;
 import org.apache.http.ssl.SSLContextBuilder;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
+import org.json.JSONArray;
 import org.json.JSONObject;
-import org.opendaylight.yang.gen.v1.http.riftio.com.ns.riftware._1._0.project.nsd.rev170228.project.nsd.catalog.Nsd;
-import org.opendaylight.yang.gen.v1.http.riftio.com.ns.riftware._1._0.project.vnfd.rev170228.project.vnfd.catalog.Vnfd;
 import org.springframework.http.HttpEntity;
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpMethod;
@@ -62,6 +61,9 @@ import org.springframework.web.client.RestTemplate;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.fasterxml.jackson.dataformat.yaml.YAMLFactory;
+
+import osm5.ns.riftware._1._0.project.nsd.rev170228.project.nsd.catalog.Nsd;
+import osm5.ns.riftware._1._0.project.vnfd.rev170228.project.vnfd.catalog.Vnfd;
 
 public class OSM5Client {
 
@@ -193,8 +195,11 @@ public class OSM5Client {
 	
 	public void getVNFPackages() {
 		ResponseEntity<String> response = this.getOSMResponse("/osm/vnfpkgm/v1/vnf_packages/");
-		System.out.printf(response.getHeaders().toString());
-		System.out.printf(response.getBody().toString());
+		System.out.println(response.getHeaders().toString());
+		String body_tmp = response.getBody();
+		System.out.println(body_tmp);
+		JSONArray jsonArray = new JSONArray(body_tmp);
+		System.out.println(jsonArray);
 	}
 
 	public Vnfd[] getVNFDs() {

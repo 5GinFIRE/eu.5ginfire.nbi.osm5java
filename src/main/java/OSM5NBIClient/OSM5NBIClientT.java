@@ -6,14 +6,14 @@ import java.util.LinkedHashMap;
 import java.util.List;
 
 import org.json.JSONObject;
-import org.opendaylight.yang.gen.v1.http.riftio.com.ns.riftware._1._0.project.nsd.rev170228.nsd.constituent.vnfd.ConstituentVnfd;
-import org.opendaylight.yang.gen.v1.http.riftio.com.ns.riftware._1._0.project.nsd.rev170228.project.nsd.catalog.Nsd;
-import org.opendaylight.yang.gen.v1.http.riftio.com.ns.riftware._1._0.project.vnfd.rev170228.project.vnfd.catalog.Vnfd;
 import org.springframework.http.ResponseEntity;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
 
 import OSM5NBIClient.NSInstantiateInstanceRequestPayload.VnF;
+import osm5.ns.riftware._1._0.project.nsd.rev170228.nsd.constituent.vnfd.ConstituentVnfd;
+import osm5.ns.riftware._1._0.project.nsd.rev170228.project.nsd.catalog.Nsd;
+import osm5.ns.riftware._1._0.project.vnfd.rev170228.project.vnfd.catalog.Vnfd;
 
 public class OSM5NBIClientT {
 	

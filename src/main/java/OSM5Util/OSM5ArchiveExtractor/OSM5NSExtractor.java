@@ -20,7 +20,7 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 import com.fasterxml.jackson.databind.node.ObjectNode;
 import com.fasterxml.jackson.dataformat.yaml.YAMLFactory;
 
-import org.opendaylight.yang.gen.v1.http.riftio.com.ns.riftware._1._0.project.nsd.rev170228.project.nsd.catalog.Nsd;
+import osm5.ns.riftware._1._0.project.nsd.rev170228.project.nsd.catalog.Nsd;
 
 public class OSM5NSExtractor {
 	private static int BUFFER_SIZE = 4 * 1024;
