@@ -9,9 +9,13 @@ import org.opendaylight.yangtools.yang.binding.ChildOf;
 import org.opendaylight.yangtools.yang.binding.Identifiable;
 import org.opendaylight.yangtools.yang.common.QName;
 
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
+
 import osm5.ns.yang.ietf.inet.types.rev130715.IpAddress;
 import osm5.ns.yang.nfvo.nsd.rev170228.$YangModuleInfoImpl;
 import osm5.ns.yang.nfvo.nsd.rev170228.nsd.vld.Vld;
+import osm5.ns.yang.nfvo.nsd.rev170228.nsd.vld.vld.VnfdConnectionPointRefBuilder.VnfdConnectionPointRefImpl;
 
 /**
  * A list of references to connection points.
@@ -46,6 +50,9 @@ import osm5.ns.yang.nfvo.nsd.rev170228.nsd.vld.Vld;
  * @see VnfdConnectionPointRefKey
  *
  */
+@JsonDeserialize(as = VnfdConnectionPointRefImpl.class)
+@JsonIgnoreProperties(ignoreUnknown = true)
+
 public interface VnfdConnectionPointRef
     extends
     ChildOf<Vld>,

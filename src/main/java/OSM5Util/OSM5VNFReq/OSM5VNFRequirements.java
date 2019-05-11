@@ -2,8 +2,9 @@ package OSM5Util.OSM5VNFReq;
 
 import java.util.Formatter;
 
-import osm5.ns.riftware._1._0.project.vnfd.rev170228.project.vnfd.catalog.Vnfd;
 import osm5.ns.riftware._1._0.vnfd.base.rev170228.vnfd.descriptor.Vdu;
+import osm5.ns.yang.nfvo.vnfd.rev170228.vnfd.catalog.Vnfd;
+
 
 public class OSM5VNFRequirements {
     public Vnfd descriptor;

@@ -6,6 +6,9 @@ import org.opendaylight.yangtools.yang.binding.ChildOf;
 import org.opendaylight.yangtools.yang.binding.Identifiable;
 import org.opendaylight.yangtools.yang.common.QName;
 
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
+
 import osm5.ns.riftware._1._0.nsd.base.rev170228.NsdDescriptorCommon;
 import osm5.ns.yang.nfvo.nsd.rev170228.$YangModuleInfoImpl;
 import osm5.ns.yang.nfvo.nsd.rev170228.NsdCatalog;
@@ -15,6 +18,7 @@ import osm5.ns.yang.nfvo.nsd.rev170228.NsdPlacementGroups;
 import osm5.ns.yang.nfvo.nsd.rev170228.NsdServicePrimitive;
 import osm5.ns.yang.nfvo.nsd.rev170228.NsdVld;
 import osm5.ns.yang.nfvo.nsd.rev170228.NsdVnfDependency;
+import osm5.ns.yang.nfvo.nsd.rev170228.nsd.catalog.NsdBuilder.NsdImpl;
 
 /**
  * 
@@ -39,6 +43,9 @@ import osm5.ns.yang.nfvo.nsd.rev170228.NsdVnfDependency;
  * @see NsdKey
  *
  */
+@JsonDeserialize(as = NsdImpl.class)
+@JsonIgnoreProperties(ignoreUnknown = true)
+//@JsonIgnoreProperties( { "meta", "forgetThisField", "input-parameter-xpath", "_admin"} )
 public interface Nsd
     extends
     ChildOf<NsdCatalog>,
@@ -59,6 +66,6 @@ public interface Nsd
 
     @Override
     NsdKey key();
-
+    String getAddedId();	
 }
 

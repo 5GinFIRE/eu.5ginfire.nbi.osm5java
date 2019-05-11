@@ -8,7 +8,7 @@ import org.apache.commons.io.FileUtils;
 
 import OSM5Util.OSM5ArchiveExtractor.OSM5VNFDExtractor;
 import OSM5Util.OSM5VNFReq.OSM5VNFRequirements;
-import osm5.ns.riftware._1._0.project.vnfd.rev170228.project.vnfd.catalog.Vnfd;
+import osm5.ns.yang.nfvo.vnfd.rev170228.vnfd.catalog.Vnfd;
 
 public class Example {
     private static URL cirrosVnfUrl;

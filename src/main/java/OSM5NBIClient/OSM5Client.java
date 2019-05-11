@@ -984,10 +984,10 @@ public class OSM5Client {
 	
 	public void authenticateMANO() throws HttpStatusCodeException
     {
-//		if(OSM4Client.getManoAuthorizationTokenTimeout()>Instant.now().getEpochSecond()+120)
+//		if(OSM5Client.getManoAuthorizationTokenTimeout()>Instant.now().getEpochSecond()+120)
 //		{
-//	        System.out.println(OSM4Client.getManoAuthorizationTokenTimeout()+">"+Instant.now().getEpochSecond()+"+120");
-//	        this.setΜΑΝΟAuthorizationBasicHeader(OSM4Client.getManoAuthorizationTokenID());	
+//	        System.out.println(OSM5Client.getManoAuthorizationTokenTimeout()+">"+Instant.now().getEpochSecond()+"+120");
+//	        this.setΜΑΝΟAuthorizationBasicHeader(OSM5Client.getManoAuthorizationTokenID());	
 //	        System.out.println("Valid Key, skipping new authentication");
 //	        return;
 //		}

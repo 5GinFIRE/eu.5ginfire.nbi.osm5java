@@ -525,7 +525,12 @@ public class VnfdBuilder implements Builder<Vnfd> {
         public String getId() {
             return _id;
         }
-        
+
+        @Override
+        public String getAddedId() {
+            return id;
+        }
+                  
         @Override
         public List<InternalVld> getInternalVld() {
             return _internalVld;

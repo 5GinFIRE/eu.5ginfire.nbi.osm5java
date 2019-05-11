@@ -8,9 +8,13 @@ import org.opendaylight.yangtools.yang.binding.ChildOf;
 import org.opendaylight.yangtools.yang.binding.Identifiable;
 import org.opendaylight.yangtools.yang.common.QName;
 
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
+
 import osm5.ns.riftware._1._0.nsd.base.rev170228.NsdVldCommon;
 import osm5.ns.yang.nfvo.nsd.rev170228.$YangModuleInfoImpl;
 import osm5.ns.yang.nfvo.nsd.rev170228.NsdVld;
+import osm5.ns.yang.nfvo.nsd.rev170228.nsd.vld.VldBuilder.VldImpl;
 import osm5.ns.yang.nfvo.nsd.rev170228.nsd.vld.vld.VnfdConnectionPointRef;
 
 /**
@@ -49,6 +53,9 @@ import osm5.ns.yang.nfvo.nsd.rev170228.nsd.vld.vld.VnfdConnectionPointRef;
  * @see VldKey
  *
  */
+@JsonDeserialize(as = VldImpl.class)
+//@JsonIgnoreProperties( {"vim-network-name", "ip-profile-ref"} )
+@JsonIgnoreProperties(ignoreUnknown = true)
 public interface Vld
     extends
     ChildOf<NsdVld>,

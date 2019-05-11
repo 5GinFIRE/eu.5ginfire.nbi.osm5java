@@ -3,7 +3,9 @@ package OSM5Util.OSM5NSReq;
 import java.util.Formatter;
 import java.util.List;
 
-import osm5.ns.riftware._1._0.project.nsd.rev170228.project.nsd.catalog.Nsd;
+import osm5.ns.yang.nfvo.nsd.rev170228.nsd.catalog.Nsd;
+import osm5.ns.yang.nfvo.nsd.rev170228.nsd.constituent.vnfd.ConstituentVnfd;
+
 
 public class OSM5NSRequirements {
     public Nsd nsDescriptor;
@@ -43,8 +45,8 @@ public class OSM5NSRequirements {
 
         fmt.format("<h2>%s</h2><br>", "ConstituentVnfds" );
         if ( nsDescriptor.getConstituentVnfd() != null ) {
-            List<osm5.ns.riftware._1._0.project.nsd.rev170228.nsd.constituent.vnfd.ConstituentVnfd> vl = nsDescriptor.getConstituentVnfd();
-            for (osm5.ns.riftware._1._0.project.nsd.rev170228.nsd.constituent.vnfd.ConstituentVnfd constituentVnfd : vl) {
+            List<ConstituentVnfd> vl = nsDescriptor.getConstituentVnfd();
+            for (ConstituentVnfd constituentVnfd : vl) {
                 fmt.format("<b>%s: </b>%s<br>", "VnfdId", constituentVnfd.getVnfdIdRef() );
             	
     		}        	

@@ -1,4 +1,5 @@
 package osm5.ns.yang.nfvo.nsd.rev170228.nsd.catalog;
+import com.fasterxml.jackson.annotation.JsonProperty;
 import com.google.common.base.MoreObjects;
 import com.google.common.collect.ImmutableMap;
 
@@ -485,28 +486,43 @@ public class NsdBuilder implements Builder<Nsd> {
         return new NsdImpl(this);
     }
 
-    private static final class NsdImpl implements Nsd {
+    public static final class NsdImpl implements Nsd {
     
         private final List<ConnectionPoint> _connectionPoint;
+        @JsonProperty("constituent-vnfd")                
         private final List<ConstituentVnfd> _constituentVnfd;
+        @JsonProperty("description")                
         private final String _description;
+        @JsonProperty("_id")                
         private final String _id;
+        @JsonProperty("id")        
+        private final String id;
+        @JsonProperty("initial-config-primitive")                        
         private final List<InitialServicePrimitive> _initialServicePrimitive;
         private final List<InputParameterXpath> _inputParameterXpath;
+        //@JsonProperty("ip-profiles")                
         private final List<IpProfiles> _ipProfiles;
         private final List<KeyPair> _keyPair;
+        @JsonProperty("logo")                
         private final String _logo;
         private final List<MonitoringParam> _monitoringParam;
+        @JsonProperty("name")                
         private final String _name;
         private final List<ParameterPool> _parameterPool;
+        @JsonProperty("placement-groups")                        
         private final List<PlacementGroups> _placementGroups;
+        @JsonProperty("scaling-group-descriptor")                        
         private final List<ScalingGroupDescriptor> _scalingGroupDescriptor;
         private final List<ServicePrimitive> _servicePrimitive;
+        @JsonProperty("short-name")                        
         private final String _shortName;
         private final List<TerminateServicePrimitive> _terminateServicePrimitive;
         private final List<User> _user;
+        @JsonProperty("vendor")                        
         private final String _vendor;
+        @JsonProperty("version")                        
         private final String _version;
+        @JsonProperty("vld")                        
         private final List<Vld> _vld;
         private final List<VnfDependency> _vnfDependency;
         private final List<Vnffgd> _vnffgd;
@@ -514,12 +530,13 @@ public class NsdBuilder implements Builder<Nsd> {
     
         private Map<Class<? extends Augmentation<Nsd>>, Augmentation<Nsd>> augmentation = Collections.emptyMap();
     
-        NsdImpl(NsdBuilder base) {
+        private NsdImpl(NsdBuilder base) {
             if (base.key() != null) {
                 this.key = base.key();
             } else {
                 this.key = new NsdKey(base.getId());
             }
+            this.id = null;                                    
             this._id = key.getId();
             this._connectionPoint = base.getConnectionPoint();
             this._constituentVnfd = base.getConstituentVnfd();
@@ -550,7 +567,11 @@ public class NsdBuilder implements Builder<Nsd> {
         public Class<Nsd> getImplementedInterface() {
             return Nsd.class;
         }
-    
+
+    	public NsdImpl(){
+    		this( new NsdBuilder() );
+    	}
+                
         @Override
         public NsdKey key() {
             return key;
@@ -575,7 +596,12 @@ public class NsdBuilder implements Builder<Nsd> {
         public String getId() {
             return _id;
         }
-        
+
+        @Override
+        public String getAddedId() {
+            return id;
+        }
+
         @Override
         public List<InitialServicePrimitive> getInitialServicePrimitive() {
             return _initialServicePrimitive;

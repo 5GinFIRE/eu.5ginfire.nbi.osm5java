@@ -1,4 +1,5 @@
 package osm5.ns.yang.nfvo.nsd.rev170228.nsd.vld.vld;
+import com.fasterxml.jackson.annotation.JsonProperty;
 import com.google.common.base.MoreObjects;
 import com.google.common.collect.ImmutableMap;
 
@@ -135,11 +136,14 @@ public class VnfdConnectionPointRefBuilder implements Builder<VnfdConnectionPoin
         return new VnfdConnectionPointRefImpl(this);
     }
 
-    private static final class VnfdConnectionPointRefImpl implements VnfdConnectionPointRef {
+    public static final class VnfdConnectionPointRefImpl implements VnfdConnectionPointRef {
     
         private final IpAddress _ipAddress;
+        @JsonProperty("member-vnf-index-ref")		        
         private final String _memberVnfIndexRef;
+        @JsonProperty("vnfd-connection-point-ref")                
         private final Object _vnfdConnectionPointRef;
+        @JsonProperty("vnfd-id-ref")                
         private final Object _vnfdIdRef;
         private final VnfdConnectionPointRefKey key;
     
@@ -156,6 +160,10 @@ public class VnfdConnectionPointRefBuilder implements Builder<VnfdConnectionPoin
             this._ipAddress = base.getIpAddress();
             this._vnfdIdRef = base.getVnfdIdRef();
             this.augmentation = ImmutableMap.copyOf(base.augmentation);
+        }
+
+        public VnfdConnectionPointRefImpl(){
+        	this( new VnfdConnectionPointRefBuilder() );
         }
     
         @Override

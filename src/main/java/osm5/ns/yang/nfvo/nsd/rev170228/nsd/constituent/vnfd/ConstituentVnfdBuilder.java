@@ -1,6 +1,9 @@
 package osm5.ns.yang.nfvo.nsd.rev170228.nsd.constituent.vnfd;
+
+import com.fasterxml.jackson.annotation.JsonProperty;
 import com.google.common.base.MoreObjects;
 import com.google.common.collect.ImmutableMap;
+
 import java.lang.Boolean;
 import java.lang.Class;
 import java.lang.Object;
@@ -132,10 +135,13 @@ public class ConstituentVnfdBuilder implements Builder<ConstituentVnfd> {
         return new ConstituentVnfdImpl(this);
     }
 
-    private static final class ConstituentVnfdImpl implements ConstituentVnfd {
+    public static final class ConstituentVnfdImpl implements ConstituentVnfd {
     
+        @JsonProperty("member-vnf-index")        
         private final String _memberVnfIndex;
+        @JsonProperty("vnfd-id-ref")                        
         private final String _vnfdIdRef;
+        @JsonProperty("start-by-default")                        
         private final Boolean _startByDefault;
         private final ConstituentVnfdKey key;
     
@@ -157,7 +163,11 @@ public class ConstituentVnfdBuilder implements Builder<ConstituentVnfd> {
         public Class<ConstituentVnfd> getImplementedInterface() {
             return ConstituentVnfd.class;
         }
-    
+
+        public ConstituentVnfdImpl(){
+        	this(new ConstituentVnfdBuilder() );
+        }
+                
         @Override
         public ConstituentVnfdKey key() {
             return key;

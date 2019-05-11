@@ -9,8 +9,12 @@ import org.opendaylight.yangtools.yang.binding.ChildOf;
 import org.opendaylight.yangtools.yang.binding.Identifiable;
 import org.opendaylight.yangtools.yang.common.QName;
 
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
+
 import osm5.ns.yang.nfvo.nsd.rev170228.$YangModuleInfoImpl;
 import osm5.ns.yang.nfvo.nsd.rev170228.NsdConstituentVnfd;
+import osm5.ns.yang.nfvo.nsd.rev170228.nsd.constituent.vnfd.ConstituentVnfdBuilder.ConstituentVnfdImpl;
 
 /**
  * List of VNFDs that are part of thisnetwork service.
@@ -41,6 +45,8 @@ import osm5.ns.yang.nfvo.nsd.rev170228.NsdConstituentVnfd;
  * @see ConstituentVnfdKey
  *
  */
+@JsonDeserialize(as = ConstituentVnfdImpl.class)
+@JsonIgnoreProperties(ignoreUnknown = true)
 public interface ConstituentVnfd
     extends
     ChildOf<NsdConstituentVnfd>,

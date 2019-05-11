@@ -6,9 +6,13 @@ import org.opendaylight.yangtools.yang.binding.ChildOf;
 import org.opendaylight.yangtools.yang.binding.Identifiable;
 import org.opendaylight.yangtools.yang.common.QName;
 
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
+
 import osm5.ns.riftware._1._0.vnfd.base.rev170228.VnfdDescriptor;
 import osm5.ns.yang.nfvo.vnfd.rev170228.$YangModuleInfoImpl;
 import osm5.ns.yang.nfvo.vnfd.rev170228.VnfdCatalog;
+import osm5.ns.yang.nfvo.vnfd.rev170228.vnfd.catalog.VnfdBuilder.VnfdImpl;
 
 /**
  * 
@@ -27,6 +31,9 @@ import osm5.ns.yang.nfvo.vnfd.rev170228.VnfdCatalog;
  * @see VnfdKey
  *
  */
+@JsonDeserialize(as = VnfdImpl.class)
+//@JsonIgnoreProperties( {"meta", "http-endpoint", "_admin"} )
+@JsonIgnoreProperties(ignoreUnknown = true)
 public interface Vnfd
     extends
     ChildOf<VnfdCatalog>,
@@ -41,6 +48,8 @@ public interface Vnfd
 
     @Override
     VnfdKey key();
+
+	String getAddedId();
 
 }
 

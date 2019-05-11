@@ -1,4 +1,5 @@
 package osm5.ns.yang.nfvo.nsd.rev170228.nsd.vld;
+import com.fasterxml.jackson.annotation.JsonProperty;
 import com.google.common.base.MoreObjects;
 import com.google.common.collect.ImmutableMap;
 import com.google.common.collect.Range;
@@ -346,20 +347,29 @@ public class VldBuilder implements Builder<Vld> {
         return new VldImpl(this);
     }
 
-    private static final class VldImpl implements Vld {
+    public static final class VldImpl implements Vld {
     
+        @JsonProperty("description")    	
         private final String _description;
+        @JsonProperty("id")        
         private final String _id;
         private final InitParams _initParams;
         private final BigInteger _leafBandwidth;
+        @JsonProperty("name")                
         private final String _name;
         private final ProviderNetwork _providerNetwork;
         private final BigInteger _rootBandwidth;
+        @JsonProperty("short-name")                
         private final String _shortName;
+        @JsonProperty("type")
         private final VirtualLinkType _type;
+        @JsonProperty("vendor")
         private final String _vendor;
+        @JsonProperty("version")
         private final String _version;
+        @JsonProperty("vnfd-connection-point-ref")                
         private final List<VnfdConnectionPointRef> _vnfdConnectionPointRef;
+        @JsonProperty("mgmt-network")        
         private final Boolean _mgmtNetwork;
         private final VldKey key;
     
@@ -385,6 +395,10 @@ public class VldBuilder implements Builder<Vld> {
             this._vnfdConnectionPointRef = base.getVnfdConnectionPointRef();
             this._mgmtNetwork = base.isMgmtNetwork();
             this.augmentation = ImmutableMap.copyOf(base.augmentation);
+        }
+        
+        public VldImpl(){
+    		this( new VldBuilder() );        	
         }
     
         @Override

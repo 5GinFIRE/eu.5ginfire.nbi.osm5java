@@ -1,4 +1,5 @@
 package osm5.ns.yang.nfvo.vnfd.rev170228.vnfd.catalog;
+import com.fasterxml.jackson.annotation.JsonProperty;
 import com.google.common.base.MoreObjects;
 import com.google.common.collect.ImmutableMap;
 
@@ -420,33 +421,52 @@ public class VnfdBuilder implements Builder<Vnfd> {
         return new VnfdImpl(this);
     }
 
-    private static final class VnfdImpl implements Vnfd {
+    public static final class VnfdImpl implements Vnfd {
     
+        @JsonProperty("connection-point")    
         private final List<ConnectionPoint> _connectionPoint;
+        @JsonProperty("description")                
         private final String _description;
         private final List<HttpEndpoint> _httpEndpoint;
+        @JsonProperty("_id")                
         private final String _id;
+        @JsonProperty("id")
+        private final String id;                
         private final List<InternalVld> _internalVld;
         private final List<IpProfiles> _ipProfiles;
+        @JsonProperty("logo")                
         private final String _logo;
+        @JsonProperty("mgmt-interface")                 
         private final MgmtInterface _mgmtInterface;
         private final List<MonitoringParam> _monitoringParam;
+        @JsonProperty("name")                
         private final String _name;
         private final VnfOperationalStatus _operationalStatus;
+        @JsonProperty("placement-groups")                
         private final List<PlacementGroups> _placementGroups;
         private final List<ScalingGroupDescriptor> _scalingGroupDescriptor;
+        @JsonProperty("service-function-chain")                
         private final osm5.ns.riftware._1._0.vnfd.base.rev170228.VnfdDescriptor.ServiceFunctionChain _serviceFunctionChain;
         private final String _serviceFunctionType;
+        @JsonProperty("short-name")                
         private final String _shortName;
+        @JsonProperty("vdu")                
         private final List<Vdu> _vdu;
         private final List<VduDependency> _vduDependency;
+        @JsonProperty("vendor")                
         private final String _vendor;
+        @JsonProperty("version")                
         private final String _version;
+        //@JsonProperty("vnf-configuration")                
         private final VnfConfiguration _vnfConfiguration;
         private final VnfdKey key;
     
         private Map<Class<? extends Augmentation<Vnfd>>, Augmentation<Vnfd>> augmentation = Collections.emptyMap();
-    
+
+        public VnfdImpl(){
+        	this( new VnfdBuilder() );
+        }        
+            
         VnfdImpl(VnfdBuilder base) {
             if (base.key() != null) {
                 this.key = base.key();
@@ -454,6 +474,7 @@ public class VnfdBuilder implements Builder<Vnfd> {
                 this.key = new VnfdKey(base.getId());
             }
             this._id = key.getId();
+            this.id = null;                        
             this._connectionPoint = base.getConnectionPoint();
             this._description = base.getDescription();
             this._httpEndpoint = base.getHttpEndpoint();
@@ -586,7 +607,12 @@ public class VnfdBuilder implements Builder<Vnfd> {
         public String getVersion() {
             return _version;
         }
-        
+
+        @Override
+        public String getAddedId() {
+            return id;
+        }
+                
         @Override
         public VnfConfiguration getVnfConfiguration() {
             return _vnfConfiguration;
